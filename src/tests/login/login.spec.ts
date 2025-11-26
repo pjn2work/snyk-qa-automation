@@ -50,7 +50,7 @@ test.describe("Login Scenarios", () => {
   });
 
   scenarios.forEach((scenario) => {
-    test(scenario.name, async ({ page }) => {
+    test(`${scenario.name}`, async ({ page }) => {
       // Act    
       await homePage.clickLogin();
       await loginPage.fillUsername(scenario.username);

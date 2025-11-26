@@ -46,9 +46,9 @@ export class UsersListPage {
     async assertEveryUserHasName(name: string, strict: boolean = false) {
         const regex_name: RegExp = (strict) ? new RegExp(`^${name}$`) : new RegExp(`.*${name}.*`);
         const rows = await this.getUsersRows().all();
-        rows.forEach((row) => {
+        for (const row of rows) {
             const nameCell = row.locator('td').first();
-            expect(nameCell).toContainText(regex_name);
-        });
+            await expect(nameCell).toContainText(regex_name);
+        }
     }
 }
